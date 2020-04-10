@@ -1,25 +1,30 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { ToastContainer, ToastPosition } from 'react-toastify';
+import { toast } from 'materialize-css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div>
+        <ToastContainer
+          autoClose={2000}
+          hideProgressBar={true}
+          position={ToastPosition.BOTTOM_RIGHT}
+        />
+        <Switch>
+          <Route 
+            exact path="/" render={props => <Login showToast={this.showToast} {...props}/>}
+          />
+          <Route 
+            exact path="/main" render={props => <Main showToast={this.showToast} {...props}/>}
+          />
+          <Route 
+            exact path="/profile" render={props => <Profile showToast={this.showToast} {...props}/>}
+          />
+        </Switch>
+      </div>
+    </BrowserRouter>
   );
 }
 
